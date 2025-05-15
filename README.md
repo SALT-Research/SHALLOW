@@ -76,21 +76,21 @@ For speech data, we included multiple categories to test hallucination behavior 
 ## Models
 For model selection, we evaluated representative models from four distinct ASR architecture families to analyze how architectural choices influence hallucination behaviors:
 
-- **Self-Supervised Speech Encoders:** HuBERT employs masked prediction objectives with a focus on acoustic feature extraction, while MMS is a strongly multilingual encoder trained on 1,406 different languages for language-agnostic representation.
-- **Encoder-Decoder Transformers:** Whisper-Large-v2 and Whisper-Large-v3 leverage large-scale weakly supervised training for strong generalization, while Canary uses token-driven decoding for formatting control. This model family balances acoustic and linguistic modeling through specific model sub-networks (e.g., encoder and decoder).
-- **Encoder-Transducer Models:** We evaluate Parakeet, a FastConformer-based model with monotonic alignment between audio and text sequences. This creates a closer connection between acoustic and linguistic components.
-- **Multimodal SpeechLLMs**: This newer paradigm includes models that extend linguistic modeling with multimodal speech processing. We include SALMONN, Qwen2Audio, Granite-Speech , Kimi-Audio, and Phi4-MM-IT, which process speech within decoder-only language models, providing a bias towards strong language modeling capabilities.
+- **Self-Supervised Speech Encoders:** HuBERT (*HuB*) employs masked prediction objectives with a focus on acoustic feature extraction, while *MMS* is a strongly multilingual encoder trained on 1,406 different languages for language-agnostic representation.
+- **Encoder-Decoder Transformers:** Whisper-Large-v2 (*W-Lv2*) and Whisper-Large-v3 (*W-Lv3*) leverage large-scale weakly supervised training for strong generalization, while *Canary* uses token-driven decoding for formatting control. This model family balances acoustic and linguistic modeling through specific model sub-networks (e.g., encoder and decoder).
+- **Encoder-Transducer Models:** We evaluate *Parakeet*, a FastConformer-based model with monotonic alignment between audio and text sequences. This creates a closer connection between acoustic and linguistic components.
+- **Multimodal SpeechLLMs**: This newer paradigm includes models that extend linguistic modeling with multimodal speech processing. We include SALMONN (*SALM.*), Qwen2Audio (*Q2A*), Qwen2.5Omni (*Q2.5O*) Granite-Speech (*Granite*) , Kimi-Audio (*Kimi*), and Phi4-Multimodal-Instruct (*Phi*), which process speech within decoder-only language models, providing a bias towards strong language modeling capabilities.
 
 ## Results
-The following table shows the results of the SHALLOW benchmark on various ASR models. The values represent the average scores across the 10 datasets used in the benchmark. The models are compared based on their performance in terms of WER, LF, PF, MH, and SH metrics.
+The following table shows the results of the SHALLOW benchmark on various ASR models. The values represent the average scores across the 10 datasets used in the benchmark. The models are compared based on their performance in terms of WER, Lexical Fabrications, Phonetic Fabrications, Morphological Hallucinations, and Semantic Hallucination metrics.
 
 | | **HuB** | **MMS** | **W-Lv2** | **Canary** | **W-Lv3** | **Parakeet** | **SALM.** | **Q2A** | **Granite** | **Kimi** | **Q2.5O** | **Phi4** |
 |:---------------:|:----------------:|:----------------:|:------------------:|:-------------------:|:------------------:|:-----------------------------------:|:------------------:|:----------------:|:--------------------:|:-----------------:|:------------------:|:-----------------:|
 | **WER** | 40.94 | 27.45 | 19.12 | 14.26 | 14.20 | 12.54 | 99.92 | 21.99 | 15.21 | 13.53 | 12.76 | 12.07 |
-| **LF**  | 14.56 | 11.03 | 8.08  | 5.43  | 6.74  | 5.38  | 13.59 | 7.13  | 5.56  | 6.92  | 5.17  | 6.18  |
-| **PF**  | 42.87 | 34.38 | 35.98 | 33.92 | 34.70 | 33.36 | 40.80 | 36.75 | 34.18 | 35.14 | 33.85 | 33.89 |
-| **MH**  | 27.55 | 23.54 | 13.15 | 11.05 | 11.13 | 10.59 | 16.54 | 13.77 | 10.13 | 12.30 | 10.56 | 11.22 |
-| **SH**  | 35.30 | 26.11 | 17.37 | 14.98 | 14.74 | 13.33 | 23.23 | 19.55 | 13.56 | 15.48 | 12.71 | 14.37 |
+| **Lexical**  | 14.56 | 11.03 | 8.08  | 5.43  | 6.74  | 5.38  | 13.59 | 7.13  | 5.56  | 6.92  | 5.17  | 6.18  |
+| **Phonetic**  | 42.87 | 34.38 | 35.98 | 33.92 | 34.70 | 33.36 | 40.80 | 36.75 | 34.18 | 35.14 | 33.85 | 33.89 |
+| **Mophologic**  | 27.55 | 23.54 | 13.15 | 11.05 | 11.13 | 10.59 | 16.54 | 13.77 | 10.13 | 12.30 | 10.56 | 11.22 |
+| **Semantic**  | 35.30 | 26.11 | 17.37 | 14.98 | 14.74 | 13.33 | 23.23 | 19.55 | 13.56 | 15.48 | 12.71 | 14.37 |
 
 The figure below shows the comparison of the best models from each architecture type (*MMS* Encoder, *Parakeet* Encoder-Transducer, *Phi4-MM-IT Decoder-only) across evaluated speech datasets. The scores are displayed as performance metrics where higher values indicate better performance, i.e., the inverse of hallucination scores.
 ![SHALLOW](assets/performance.png)
