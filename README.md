@@ -97,9 +97,11 @@ The figure below shows the comparison of the best models from each architecture 
 
 Please refer to the paper for detailed results and analysis of the SHALLOW benchmark. 
 
+## Synthetic Data
+We provide a synthetic dataset to evaluate the goodness of SHALLOW metrics, licensed under [CC-BY-NC-SA-4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). The dataset is generated using GPT-4o model, and includes various types of hallucinations. The dataset is available in the `synthetic_eval_data` directory.
 
 ## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the Apache 2.0 License. See the [LICENSE](LICENSE) file for details.
 
 ## Contact
 For any questions or inquiries, please contact [Alkis Koudounas](mailto:alkis.koudounas@polito.it) or [Moreno La Quatra](mailto:moreno.laquatra@unikore.it).
