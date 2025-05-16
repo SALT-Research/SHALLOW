@@ -17,6 +17,7 @@ SHALLOW extends traditional WER scores, and provides a more comprehensive evalua
 - [Datasets](#datasets)
 - [Models](#models)
 - [Results](#results)
+- [Synthetic Data](#synthetic-data)
 - [License](#license)
 - [Contact](#contact)
 - [Citation](#citation)
