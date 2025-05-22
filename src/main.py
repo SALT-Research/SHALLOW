@@ -69,7 +69,7 @@ def process_batch(
             start_time = time.time()
             if verbose:
                 print(f"Worker {worker_identifier} processing example {idx}")
-            ## If reference and hypothesis are the same, use default scores
+            ## If reference and hypothesis are the same, use the default scores
             if ref == hyp:
                 if verbose:
                     print(f"Worker {worker_identifier} found ref==hyp for example {idx}")
@@ -85,7 +85,7 @@ def process_batch(
                     'sub_ratio': 0.0,
                     'phonetic_hamming': 0,
                     'phonetic_levenshtein': 0,
-                    'phonetic_jaro_winkler': 0.0,
+                    'phonetic_jaro_winkler': 1.0,
                     'structural_divergence': 0.0,
                     'gramm_errors': 0,
                     'gramm_errors_spelling': 0,
