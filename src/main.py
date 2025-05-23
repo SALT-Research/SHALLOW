@@ -70,7 +70,7 @@ def process_batch(
             if verbose:
                 print(f"Worker {worker_identifier} processing example {idx}")
             ## If reference and hypothesis are the same, use the default scores
-            if ref == hyp:
+            if str(ref).strip() == str(hyp).strip():
                 if verbose:
                     print(f"Worker {worker_identifier} found ref==hyp for example {idx}")
                 results.append({
