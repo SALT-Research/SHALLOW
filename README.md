@@ -423,6 +423,10 @@ Average scores across all 10 datasets. Higher WER indicates worse transcription.
 
 Model abbreviations: HuB = HuBERT, W-Lv2 = Whisper-Large-v2, W-Lv3 = Whisper-Large-v3, SALM. = SALMONN, Q2A = Qwen2Audio, Q2.5O = Qwen2.5-Omni.
 
+### Additional Community Model Evaluations (Public 6-Corpus Subset)
+
+- **Oruk-Fourier-2B vs. Qwen3-ASR-1.7B-hf** (paired evaluation across all 6 publicly accessible exact-split SHALLOW corpora — LibriSpeech-other, TEDLIUM, GigaSpeech, GLOBE-v2, SpeechOcean, VoxPopuli; `39,415` utterances): see [`results/ORUK_FOURIER_2B.md`](results/ORUK_FOURIER_2B.md) and [`results/oruk_fourier_2b_paired_summary.json`](results/oruk_fourier_2b_paired_summary.json).
+
 ---
 
 ## Synthetic Benchmark Dataset
