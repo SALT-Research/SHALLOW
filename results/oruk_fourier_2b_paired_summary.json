@@ -1,0 +1,455 @@
+{
+  "benchmark": "SALT-Research/SHALLOW",
+  "evaluation_date": "2026-11-25",
+  "models": {
+    "oruk-fourier-2b": {
+      "hf_repo": "oruk/oruk-fourier-2b",
+      "revision": "8c2a8871f1304aa2f634da4fb95e24438c4945b9",
+      "weight_bytes": 4076193080,
+      "weight_sha256": "e64765ffdd90c83704c0951e0d88b7f2ed84499af5c208f7ddf8d922cf08441c",
+      "license": "CC BY-NC 4.0",
+      "precision": "bfloat16",
+      "decoding": "published generation_config.json (num_beams=3, no_repeat_ngram_size=8, do_sample=False, max_new_tokens=512, 32,253 bad_words_ids, language='en')",
+      "language_scope": "English-only"
+    },
+    "qwen3-asr-1.7b-hf": {
+      "hf_repo": "Qwen/Qwen3-ASR-1.7B-hf",
+      "license": "Apache-2.0",
+      "precision": "bfloat16",
+      "decoding": "native HF greedy default (num_beams=1, do_sample=False, max_new_tokens=512, language='en')",
+      "language_scope": "Multilingual (evaluated on English)"
+    }
+  },
+  "coverage": {
+    "evaluated_corpora_count": 6,
+    "evaluated_corpora": [
+      "ls",
+      "tedlium",
+      "gigaspeech",
+      "globe",
+      "speechocean",
+      "voxpopuli"
+    ],
+    "total_utterances_6_corpora": 39415,
+    "unavailable_corpora": {
+      "CHiME-6": "11,027 utts \u2014 not publicly redistributed in full on Hugging Face Hub",
+      "MyST Child": "13,180 utts \u2014 paid LDC catalog release (LDC2021S05)",
+      "CV16-Accented": "2,197 utts \u2014 mozilla-foundation/common_voice_16_1 removed from HF Hub (404) and author subset IDs unavailable",
+      "CORAAL": "5,000 utts \u2014 author-sampled subset IDs unavailable (anonymous.4open.science/r/SHALLOW expired)"
+    }
+  },
+  "scoring_parity_verification": {
+    "tool": "local language_tool_python.LanguageTool('en-US') + cached evaluate.load('bertscore') + batched masked bert-base-uncased window embeddings",
+    "num_synthetic_pairs": 25,
+    "overall_max_abs_diff": 1.8e-07,
+    "max_abs_diffs": {
+      "wer_score": 0.0,
+      "lf_ins": 0.0,
+      "lf_del": 0.0,
+      "lf_sub": 0.0,
+      "pf_hamming": 0.0,
+      "pf_levenshtein": 0.0,
+      "pf_jw": 0.0,
+      "me_struct_div": 0.0,
+      "me_total_errs": 0.0,
+      "se_local_w1": 1.8e-07,
+      "se_local_w2": 1.8e-07,
+      "se_local_w3": 1.5e-07,
+      "se_global_cos": 0.0,
+      "se_global_coh": 0.0
+    },
+    "passed": true
+  },
+  "macro_average_6_public_corpora": {
+    "oruk-fourier-2b": {
+      "WER": 7.43,
+      "LF": 3.68,
+      "PF": 12.83,
+      "ME": 7.67,
+      "SE": 10.59
+    },
+    "qwen3-asr-1.7b-hf": {
+      "WER": 7.62,
+      "LF": 4.7,
+      "PF": 13.09,
+      "ME": 8.24,
+      "SE": 11.64
+    }
+  },
+  "per_corpus": {
+    "ls": {
+      "dataset": {
+        "display_name": "LibriSpeech (other)",
+        "hf_repo": "hf-audio/open-asr-leaderboard",
+        "config": "librispeech",
+        "split": "test.other",
+        "official_shallow_utts": 2939
+      },
+      "models": {
+        "oruk-fourier-2b": {
+          "num_utterances": 2939,
+          "exact_match_utterances": 2147,
+          "WER": 2.59,
+          "utterance_wer": 3.09,
+          "LF": 0.93,
+          "PF": 3.98,
+          "ME": 3.88,
+          "SE": 2.94,
+          "components": {
+            "insertions_ratio": 0.24,
+            "deletions_ratio": 0.39,
+            "substitutions_ratio": 2.43,
+            "structural_divergence": 8.94,
+            "grammatical_errors_score": 0.5,
+            "local_semantic_error": 2.38,
+            "global_semantic_error": 3.12
+          }
+        },
+        "qwen3-asr-1.7b-hf": {
+          "num_utterances": 2939,
+          "exact_match_utterances": 1957,
+          "WER": 3.37,
+          "utterance_wer": 4.12,
+          "LF": 1.24,
+          "PF": 4.83,
+          "ME": 5.07,
+          "SE": 3.88,
+          "components": {
+            "insertions_ratio": 0.3,
+            "deletions_ratio": 0.48,
+            "substitutions_ratio": 3.31,
+            "structural_divergence": 11.57,
+            "grammatical_errors_score": 0.73,
+            "local_semantic_error": 3.05,
+            "global_semantic_error": 4.16
+          }
+        }
+      }
+    },
+    "tedlium": {
+      "dataset": {
+        "display_name": "TEDLIUM",
+        "hf_repo": "sanchit-gandhi/tedlium-data",
+        "config": "default",
+        "split": "test",
+        "official_shallow_utts": 1469
+      },
+      "models": {
+        "oruk-fourier-2b": {
+          "num_utterances": 1469,
+          "exact_match_utterances": 777,
+          "WER": 10.8,
+          "utterance_wer": 37.58,
+          "LF": 5.34,
+          "PF": 25.69,
+          "ME": 11.02,
+          "SE": 21.97,
+          "components": {
+            "insertions_ratio": 0.75,
+            "deletions_ratio": 19.04,
+            "substitutions_ratio": 3.86,
+            "structural_divergence": 27.23,
+            "grammatical_errors_score": 0.21,
+            "local_semantic_error": 21.7,
+            "global_semantic_error": 22.06
+          }
+        },
+        "qwen3-asr-1.7b-hf": {
+          "num_utterances": 1469,
+          "exact_match_utterances": 774,
+          "WER": 10.81,
+          "utterance_wer": 37.64,
+          "LF": 5.61,
+          "PF": 23.47,
+          "ME": 10.96,
+          "SE": 19.94,
+          "components": {
+            "insertions_ratio": 0.77,
+            "deletions_ratio": 16.7,
+            "substitutions_ratio": 6.29,
+            "structural_divergence": 27.16,
+            "grammatical_errors_score": 0.17,
+            "local_semantic_error": 20.61,
+            "global_semantic_error": 19.71
+          }
+        }
+      }
+    },
+    "tedlium_scorable": {
+      "dataset": {
+        "display_name": "TEDLIUM (scorable diagnostic, excl. 314 ignore_time_segment_in_scoring)",
+        "hf_repo": "sanchit-gandhi/tedlium-data",
+        "config": "default",
+        "split": "test (filtered)",
+        "official_shallow_utts": 1155
+      },
+      "models": {
+        "oruk-fourier-2b": {
+          "num_utterances": 1155,
+          "exact_match_utterances": 777,
+          "WER": 2.3,
+          "utterance_wer": 2.6,
+          "LF": 0.8,
+          "PF": 5.97,
+          "ME": 3.11,
+          "SE": 2.28,
+          "components": {
+            "insertions_ratio": 0.52,
+            "deletions_ratio": 0.71,
+            "substitutions_ratio": 1.32,
+            "structural_divergence": 7.45,
+            "grammatical_errors_score": 0.22,
+            "local_semantic_error": 2.14,
+            "global_semantic_error": 2.33
+          }
+        },
+        "qwen3-asr-1.7b-hf": {
+          "num_utterances": 1155,
+          "exact_match_utterances": 774,
+          "WER": 2.27,
+          "utterance_wer": 2.62,
+          "LF": 0.79,
+          "PF": 5.99,
+          "ME": 3.06,
+          "SE": 2.34,
+          "components": {
+            "insertions_ratio": 0.43,
+            "deletions_ratio": 0.77,
+            "substitutions_ratio": 1.39,
+            "structural_divergence": 7.35,
+            "grammatical_errors_score": 0.2,
+            "local_semantic_error": 2.23,
+            "global_semantic_error": 2.37
+          }
+        }
+      }
+    },
+    "gigaspeech": {
+      "dataset": {
+        "display_name": "GigaSpeech",
+        "hf_repo": "speechcolab/gigaspeech",
+        "config": "test",
+        "split": "test",
+        "official_shallow_utts": 25619
+      },
+      "models": {
+        "oruk-fourier-2b": {
+          "num_utterances": 25619,
+          "exact_match_utterances": 12090,
+          "WER": 11.16,
+          "utterance_wer": 20.39,
+          "LF": 9.16,
+          "PF": 21.26,
+          "ME": 11.88,
+          "SE": 18.91,
+          "components": {
+            "insertions_ratio": 15.12,
+            "deletions_ratio": 1.23,
+            "substitutions_ratio": 3.74,
+            "structural_divergence": 28.54,
+            "grammatical_errors_score": 0.77,
+            "local_semantic_error": 17.75,
+            "global_semantic_error": 19.3
+          }
+        },
+        "qwen3-asr-1.7b-hf": {
+          "num_utterances": 25619,
+          "exact_match_utterances": 9556,
+          "WER": 12.57,
+          "utterance_wer": 28.55,
+          "LF": 15.1,
+          "PF": 27.23,
+          "ME": 15.36,
+          "SE": 27.02,
+          "components": {
+            "insertions_ratio": 22.72,
+            "deletions_ratio": 1.54,
+            "substitutions_ratio": 4.01,
+            "structural_divergence": 37.22,
+            "grammatical_errors_score": 0.79,
+            "local_semantic_error": 25.79,
+            "global_semantic_error": 27.43
+          }
+        }
+      }
+    },
+    "globe": {
+      "dataset": {
+        "display_name": "GLOBE-v2",
+        "hf_repo": "MushanW/GLOBE_V2",
+        "config": "default",
+        "split": "test",
+        "official_shallow_utts": 5046
+      },
+      "models": {
+        "oruk-fourier-2b": {
+          "num_utterances": 5046,
+          "exact_match_utterances": 4425,
+          "WER": 1.66,
+          "utterance_wer": 1.95,
+          "LF": 0.58,
+          "PF": 2.01,
+          "ME": 1.97,
+          "SE": 1.79,
+          "components": {
+            "insertions_ratio": 0.19,
+            "deletions_ratio": 0.27,
+            "substitutions_ratio": 1.45,
+            "structural_divergence": 4.45,
+            "grammatical_errors_score": 0.32,
+            "local_semantic_error": 1.64,
+            "global_semantic_error": 1.85
+          }
+        },
+        "qwen3-asr-1.7b-hf": {
+          "num_utterances": 5046,
+          "exact_match_utterances": 4454,
+          "WER": 1.56,
+          "utterance_wer": 1.8,
+          "LF": 0.54,
+          "PF": 1.86,
+          "ME": 1.9,
+          "SE": 1.69,
+          "components": {
+            "insertions_ratio": 0.14,
+            "deletions_ratio": 0.27,
+            "substitutions_ratio": 1.38,
+            "structural_divergence": 4.24,
+            "grammatical_errors_score": 0.34,
+            "local_semantic_error": 1.56,
+            "global_semantic_error": 1.74
+          }
+        }
+      }
+    },
+    "speechocean": {
+      "dataset": {
+        "display_name": "SpeechOcean",
+        "hf_repo": "mispeech/speechocean762",
+        "config": "default",
+        "split": "test",
+        "official_shallow_utts": 2500
+      },
+      "models": {
+        "oruk-fourier-2b": {
+          "num_utterances": 2500,
+          "exact_match_utterances": 1524,
+          "WER": 11.02,
+          "utterance_wer": 12.36,
+          "LF": 3.64,
+          "PF": 8.16,
+          "ME": 9.84,
+          "SE": 12.51,
+          "components": {
+            "insertions_ratio": 0.99,
+            "deletions_ratio": 1.25,
+            "substitutions_ratio": 9.66,
+            "structural_divergence": 23.81,
+            "grammatical_errors_score": 0.53,
+            "local_semantic_error": 7.93,
+            "global_semantic_error": 14.03
+          }
+        },
+        "qwen3-asr-1.7b-hf": {
+          "num_utterances": 2500,
+          "exact_match_utterances": 1549,
+          "WER": 11.14,
+          "utterance_wer": 12.57,
+          "LF": 3.67,
+          "PF": 8.16,
+          "ME": 9.68,
+          "SE": 12.37,
+          "components": {
+            "insertions_ratio": 0.9,
+            "deletions_ratio": 1.41,
+            "substitutions_ratio": 9.79,
+            "structural_divergence": 23.37,
+            "grammatical_errors_score": 0.54,
+            "local_semantic_error": 7.97,
+            "global_semantic_error": 13.83
+          }
+        }
+      }
+    },
+    "voxpopuli": {
+      "dataset": {
+        "display_name": "VoxPopuli",
+        "hf_repo": "hf-audio/open-asr-leaderboard",
+        "config": "voxpopuli",
+        "split": "test",
+        "official_shallow_utts": 1842
+      },
+      "models": {
+        "oruk-fourier-2b": {
+          "num_utterances": 1842,
+          "exact_match_utterances": 643,
+          "WER": 7.33,
+          "utterance_wer": 7.55,
+          "LF": 2.42,
+          "PF": 15.89,
+          "ME": 7.46,
+          "SE": 5.41,
+          "components": {
+            "insertions_ratio": 2.17,
+            "deletions_ratio": 1.96,
+            "substitutions_ratio": 3.15,
+            "structural_divergence": 17.55,
+            "grammatical_errors_score": 0.73,
+            "local_semantic_error": 4.65,
+            "global_semantic_error": 5.66
+          }
+        },
+        "qwen3-asr-1.7b-hf": {
+          "num_utterances": 1842,
+          "exact_match_utterances": 773,
+          "WER": 6.28,
+          "utterance_wer": 6.89,
+          "LF": 2.04,
+          "PF": 13.02,
+          "ME": 6.48,
+          "SE": 4.92,
+          "components": {
+            "insertions_ratio": 1.66,
+            "deletions_ratio": 1.68,
+            "substitutions_ratio": 2.9,
+            "structural_divergence": 15.17,
+            "grammatical_errors_score": 0.68,
+            "local_semantic_error": 4.1,
+            "global_semantic_error": 5.19
+          }
+        }
+      }
+    }
+  },
+  "diagnostics": {
+    "gigaspeech_empty_gt_non_speech_abstinence": {
+      "oruk-fourier-2b": {
+        "empty_gt_segments": 5762,
+        "clean_empty_predictions": 2202,
+        "clean_abstinence_rate_pct": 38.22,
+        "hallucinated_segments": 3560,
+        "hallucinated_words_on_empty_gt": 14963
+      },
+      "qwen3-asr-1.7b-hf": {
+        "empty_gt_segments": 5762,
+        "clean_empty_predictions": 261,
+        "clean_abstinence_rate_pct": 4.53,
+        "hallucinated_segments": 5501,
+        "hallucinated_words_on_empty_gt": 17913
+      }
+    },
+    "tedlium_ignore_time_segment_in_scoring_gaps": {
+      "total_gap_segments": 314,
+      "oruk-fourier-2b": {
+        "empty_predictions": 126,
+        "empty_rate_pct": 40.13,
+        "emitted_words": 1239
+      },
+      "qwen3-asr-1.7b-hf": {
+        "empty_predictions": 0,
+        "empty_rate_pct": 0.0,
+        "emitted_words": 1413
+      }
+    }
+  }
+}
